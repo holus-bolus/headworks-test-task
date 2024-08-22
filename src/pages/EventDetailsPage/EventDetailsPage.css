@@ -1,0 +1,154 @@
+.event-details {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.event-details h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+}
+
+.event-description {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.event-date {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.ticket-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ticket-item {
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.ticket-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.delete-event-button {
+    background-color: #ff4d4f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.delete-event-button:hover {
+    background-color: #d4380d;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+.edit-ticket-button,
+.edit-event-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.edit-ticket-button:hover,
+.edit-event-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #ff4d4f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.delete-button:hover {
+    background-color: #d4380d;
+}
+
+.delete-event-button {
+    background-color: #ff4d4f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+.delete-event-button:hover {
+    background-color: #d4380d;
+}
+
+.cancel-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+.close-button:hover {
+    color: #ff0000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
