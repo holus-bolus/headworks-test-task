@@ -1,9 +1,6 @@
-Here is a sample `README.md` file for your React client project that is integrated with Firebase:
+# Event Management Application
 
-```markdown
-# Event Management Client
-
-This is a React-based client application for managing events, integrated with Firebase Firestore as the backend.
+This project is a full-stack event management application built with a React frontend and an Express.js backend. The backend connects to a MongoDB database for data storage.
 
 ## Features
 
@@ -11,112 +8,113 @@ This is a React-based client application for managing events, integrated with Fi
 - **Event Listing**: View a list of all created events.
 - **Event Updating**: Update the details of existing events.
 - **Event Deletion**: Remove events from the list.
-- **Firebase Integration**: All data is stored in Firebase Firestore.
+- **MongoDB Integration**: All data is stored in MongoDB via the Express.js backend.
 
 ## Getting Started
 
 ### Prerequisites
 
-Make sure you have the following installed on your machine:
+Ensure you have the following installed on your machine:
 
 - **Node.js** (version 14.x or above)
 - **npm** (Node package manager)
+- **MongoDB** (local installation or a cloud MongoDB instance)
 
 ### Installation
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/event-management-client.git
-   cd event-management-client
-   ```
+   git clone https://github.com/your-username/event-management-app.git
+   cd event-management-app
 
-2. **Install dependencies**:
+    Install client dependencies:
 
-   ```bash
-   npm install
-   ```
+    bash
 
-3. **Set up Firebase**:
+cd client
+npm install
 
-   - Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
-   - Add a web app to your Firebase project to get the Firebase configuration.
-   - Copy the Firebase configuration and replace it in `src/firebaseConfig.js` with your own configuration:
+Install server dependencies:
 
-     ```javascript
-     import { initializeApp } from 'firebase/app'
-     import { getFirestore } from 'firebase/firestore'
+bash
 
-     const firebaseConfig = {
-         apiKey: "YOUR_API_KEY",
-         authDomain: "YOUR_AUTH_DOMAIN",
-         projectId: "YOUR_PROJECT_ID",
-         storageBucket: "YOUR_STORAGE_BUCKET",
-         messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-         appId: "YOUR_APP_ID",
-         measurementId: "YOUR_MEASUREMENT_ID"
-     };
+    cd ../server
+    npm install
 
-     const app = initializeApp(firebaseConfig);
-     const db = getFirestore(app);
+MongoDB Setup
 
-     export { db }
-     ```
+    Local MongoDB: If you're using a local MongoDB instance, ensure it is running.
+    MongoDB Atlas: If you're using MongoDB Atlas, ensure your connection string is correctly set up.
 
-### Running the Application
+Running the Application
+Running the Backend Server
 
-To run the application locally:
+    Start the Express.js server:
 
-```bash
-npm start
-```
+    bash
 
-This will start the development server on `http://localhost:3000`.
+    cd server
+    npm start
 
-### Building the Application
+    The server will start on http://localhost:5000.
 
-To build the application for production:
+Running the Frontend
 
-```bash
+    Start the React development server:
+
+    bash
+
+    cd client
+    npm start
+
+    The React app will start on http://localhost:3000.
+
+Building the Application
+
+To build the React frontend for production:
+
+bash
+
+cd client
 npm run build
-```
 
 The build will be optimized for deployment.
+Testing
 
-### Testing
+Currently, there are no specific tests implemented. However, you can write your own tests using a framework like Jest or React Testing Library for the frontend, and Mocha or Jest for the backend.
+Project Structure
 
-Currently, there are no specific tests implemented. However, you can write your own tests using a framework like Jest or React Testing Library.
+    client/src/components/: Contains the React components for the application.
+    client/src/redux/: Contains Redux slices and store configuration.
+    client/src/App.js: The main React component that ties everything together.
+    server/: Contains the Express.js server code and MongoDB integration.
+        server/server.js: The entry point for the Express server.
+        server/models/: Contains the Mongoose schemas and models.
 
-## Project Structure
+MongoDB Integration
 
-- **`src/components/`**: Contains the React components for the application.
-- **`src/eventService.js`**: Contains the Firestore CRUD operations.
-- **`src/firebaseConfig.js`**: Contains the Firebase initialization and configuration.
-- **`src/App.js`**: The main React component that ties everything together.
+This project uses MongoDB to store event data. The following operations are supported:
 
-## Firebase Integration
+    Create Event: Adds a new event to MongoDB.
+    Read Events: Fetches all events from MongoDB.
+    Update Event: Updates an existing event in MongoDB.
+    Delete Event: Deletes an event from MongoDB.
 
-This project uses Firebase Firestore to store event data. The following operations are supported:
-
-- **Create Event**: Adds a new event to Firestore.
-- **Read Events**: Fetches all events from Firestore.
-- **Update Event**: Updates an existing event in Firestore.
-- **Delete Event**: Deletes an event from Firestore.
-
-## Contributing
+Contributing
 
 Contributions are welcome! Please fork this repository and submit a pull request if you have any improvements.
+License
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
+This project is licensed under the MIT License. See the LICENSE file for details.
+Contact
 
 For any questions or feedback, please reach out to ustinovoleksij@gmail.com.
 
-```
+vbnet
+
 
 ### Summary
 
-This `README.md` provides an overview of the project, installation instructions, details on how to run the project, and information on how Firebase is integrated. It's structured to help new developers understand how to get the project up and running quickly. Make sure to replace placeholder text (like `your-username`, `your-email@example.com`, and Firebase configuration placeholders) with actual data relevant to your project.
+This `README.md` provides an overview of the project, installation instructions, and details on how to run both the client and server parts of the application. It also includes information on the MongoDB integration, project structure, and how to contribute. Make sure to replace placeholders like `your-username` and email with actual data relevant to your project.
+
