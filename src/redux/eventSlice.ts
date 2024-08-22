@@ -39,7 +39,6 @@ const eventSlice = createSlice({
         deleteEvent(state, action: PayloadAction<{ id: string }>) {
             console.log(`Event with ID: ${action.payload.id} is being deleted`);
             state.events = state.events.filter(event => event.id !== action.payload.id);
-            console.log('Remaining events:', state.events);
         },
         addTicket(state, action: PayloadAction<{ eventId: string; ticket: ITicket }>) {
             const event = state.events.find(event => event.id === action.payload.eventId);
