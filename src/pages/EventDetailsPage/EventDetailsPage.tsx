@@ -31,16 +31,20 @@ const EventDetailsPage = () => {
     });
 
     const handleDeleteTicket = (ticketId: string) => {
-        console.log(`Deleting ticket with ID: ${ticketId}`);
         dispatch(deleteTicket({ eventId: id!, ticketId }));
     };
 
-    const handleDeleteEvent = () => {
-        console.log(`Deleting event with ID: ${id}`);
-        dispatch(deleteEvent({ id: id! }));
-        console.log(`Event with ID: ${id} should be deleted`);
+const handleDeleteEvent = async () => {
+    try {
+        console.log('Deleting event with ID:', id);
+        await dispatch(deleteEvent(id!)).unwrap();
+        console.log('Event deleted successfully');
         navigate('/');
-    };
+    } catch (err) {
+        console.error('Failed to delete the event:', err);
+    }
+};
+
 
     const handleShowDeleteModal = () => {
         setShowDeleteModal(true);

@@ -2,7 +2,7 @@ import './App.css'
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CreateEventPage from "./pages/CreateEventPage";
-import EditEventPage from "./pages/EditEventPage";
+import EditEventPage from "./pages/EditEventPage.jsx";
 import EventDetailsPage from "./pages/EventDetailsPage/EventDetailsPage.tsx";
 
 const RootLayout = () => {

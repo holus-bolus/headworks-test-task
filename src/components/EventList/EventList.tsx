@@ -1,14 +1,20 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store.ts";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEvents } from "../../redux/eventSlice";
+import { RootState, AppDispatch } from "../../redux/store";
 import { Link } from "react-router-dom";
 import './EventList.css';
 
 const EventList = () => {
-    const events = useSelector((state: RootState) => state.events.events);
+    const dispatch = useDispatch<AppDispatch>(); // Use the correct dispatch type
+    const { events, loading, error } = useSelector((state: RootState) => state.events);
     const [sortCriteria, setSortCriteria] = useState<'name' | 'date'>('name');
     const [filterByDate, setFilterByDate] = useState<string>('');
     const [filterByTickets, setFilterByTickets] = useState<number | ''>('');
+
+    useEffect(() => {
+        dispatch(fetchEvents());
+    }, [dispatch]);
 
     const dateFormatter = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
@@ -26,7 +32,6 @@ const EventList = () => {
         }
     });
 
-    // Filter events based on date and ticket availability
     const filteredEvents = sortedEvents.filter(event => {
         const eventDateMatches = filterByDate
             ? new Date(event.date).toISOString().slice(0, 10) === filterByDate
@@ -38,6 +43,9 @@ const EventList = () => {
 
         return eventDateMatches && ticketsAvailableMatches;
     });
+
+    if (loading) return <p>Loading events...</p>;
+    if (error) return <p>Error loading events: {error}</p>;
 
     return (
         <div className='event-list'>
@@ -87,7 +95,7 @@ const EventList = () => {
                 </>
             )}
         </div>
-    )
+    );
 }
 
 export default EventList;

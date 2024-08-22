@@ -1,20 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { v4 as uuidv4 } from 'uuid';
-import { addEvent, updateEvent } from "../../redux/eventSlice.ts";
+import { createEvent, updateEvent } from "../../redux/eventSlice";
 import { useNavigate } from "react-router-dom";
 import './EventForm.css';
-import Event from "../../interfaces/IEvent.ts";
 import Modal from "../Modal/Modal";
+import { AppDispatch } from "../../redux/store";
+import IEvent from "../../interfaces/IEvent.ts";
 
-const EventForm = ({ existingEvent = null }: { existingEvent?: Event | null }) => {
+
+
+const EventForm = ({ existingEvent = null }: { existingEvent?: IEvent | null }) => {
     const [name, setName] = useState(existingEvent?.name || '');
     const [description, setDescription] = useState(existingEvent?.description || '');
     const [date, setDate] = useState(existingEvent?.date || '');
     const [errors, setErrors] = useState({ name: '', description: '', date: '' });
     const [showModal, setShowModal] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (existingEvent) {
+            setName(existingEvent.name);
+            setDescription(existingEvent.description);
+            setDate(existingEvent.date);
+        }
+    }, [existingEvent]);
 
     const validateForm = () => {
         let isValid = true;
@@ -41,17 +51,17 @@ const EventForm = ({ existingEvent = null }: { existingEvent?: Event | null }) =
 
     const handleSubmit = () => {
         if (validateForm()) {
-            const event: Event = {
-                id: existingEvent ? existingEvent.id : uuidv4(),
+            const event: IEvent = {
+                id: existingEvent ? existingEvent.id : '',
                 name,
                 description,
                 date,
                 tickets: existingEvent ? existingEvent.tickets : []
             };
             if (existingEvent) {
-                dispatch(updateEvent(event));
+                dispatch(updateEvent({ id: existingEvent.id, updatedEvent: event }));
             } else {
-                dispatch(addEvent(event));
+                dispatch(createEvent(event));
             }
             navigate('/');
         }
